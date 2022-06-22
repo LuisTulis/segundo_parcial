@@ -13,7 +13,7 @@
 int parser_Service(FILE* pFile, LinkedList* pArrayListService)
 {
 
-	Service* nuevo;
+	eServicio* nuevo;
 
 	char idAux[50];
 	char descAux[50];

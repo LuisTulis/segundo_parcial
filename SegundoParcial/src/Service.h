@@ -15,37 +15,37 @@ struct{
 	float precio;
 	int cantidad;
 	float total;
-}typedef Service;
+}typedef eServicio;
 
 #endif /* SERVICE_H_ */
 
-Service* Service_new();
-Service*Service_newParametros(char* idStr,char* cantStr, char* tipoStr, char* precioStr, char* descStr, char* totalStr);
+eServicio* Service_new();
+eServicio*Service_newParametros(char* idStr,char* cantStr, char* tipoStr, char* precioStr, char* descStr, char* totalStr);
 void Service_delete();
 
-int Service_setId(Service* this,int id);
-int Service_getId(Service* this,int* id);
+int Service_setId(eServicio* this,int id);
+int Service_getId(eServicio* this,int* id);
 
-int Service_setDesc(Service* this,char* desc);
-int Service_getDesc(Service* this,char* desc);
+int Service_setDesc(eServicio* this,char* desc);
+int Service_getDesc(eServicio* this,char* desc);
 
-int Service_setPrecio(Service* this,float precio);
-int Service_getPrecio(Service* this,float* precio);
+int Service_setPrecio(eServicio* this,float precio);
+int Service_getPrecio(eServicio* this,float* precio);
 
-int Service_setCant(Service* this,int cant);
-int Service_getCant(Service* this,int* cant);
+int Service_setCant(eServicio* this,int cant);
+int Service_getCant(eServicio* this,int* cant);
 
-int Service_setTipo(Service* this,int tipo);
-int Service_getTipo(Service* this,int* tipo);
+int Service_setTipo(eServicio* this,int tipo);
+int Service_getTipo(eServicio* this,int* tipo);
 
-int Service_setTotal(Service* this,float total);
-int Service_getTotal(Service* this,float* total);
+int Service_setTotal(eServicio* this,float total);
+int Service_getTotal(eServicio* this,float* total);
 
 //------------------------------------------------------------------//
 
 void Service_list(LinkedList* pArrayListService);
 
-void Service_print(Service* this);
+void Service_print(eServicio* this);
 
 int Service_idDisponible(LinkedList* pArrayListService);
 

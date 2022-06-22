@@ -18,7 +18,7 @@
  * \return int
  *
  */
-int Service_setId(Service* this,int id)
+int Service_setId(eServicio* this,int id)
 {
 	int retorno = 0;
 	this->id = id;
@@ -37,7 +37,7 @@ int Service_setId(Service* this,int id)
  * \return int
  *
  */
-int Service_getId(Service* this,int* id)
+int Service_getId(eServicio* this,int* id)
 {
 	int retorno = 0;
 	*id = this->id;
@@ -58,7 +58,7 @@ int Service_getId(Service* this,int* id)
  * \return int
  *
  */
-int Service_setCant(Service* this,int cant)
+int Service_setCant(eServicio* this,int cant)
 {
 	int retorno = 0;
 	this->cantidad = cant;
@@ -77,7 +77,7 @@ int Service_setCant(Service* this,int cant)
  * \return int
  *
  */
-int Service_getCant(Service* this,int* cant)
+int Service_getCant(eServicio* this,int* cant)
 {
 	int retorno = 0;
 	*cant = this->cantidad;
@@ -95,7 +95,7 @@ int Service_getCant(Service* this,int* cant)
  * \return int
  *
  */
-int Service_setDesc(Service* this,char* desc)
+int Service_setDesc(eServicio* this,char* desc)
 {
 	int retorno = 0;
 	strcpy(this->descripcion, desc);
@@ -116,7 +116,7 @@ int Service_setDesc(Service* this,char* desc)
  * \return int
  *
  */
-int Service_getDesc(Service* this,char* desc)
+int Service_getDesc(eServicio* this,char* desc)
 {
 	int retorno = 0;
 	strcpy(desc, this->descripcion);
@@ -137,7 +137,7 @@ int Service_getDesc(Service* this,char* desc)
  * \return int
  *
  */
-int Service_setTipo(Service* this,int tipoServicio)
+int Service_setTipo(eServicio* this,int tipoServicio)
 {
 	int retorno = 0;
 	this->tipo = tipoServicio;
@@ -156,7 +156,7 @@ int Service_setTipo(Service* this,int tipoServicio)
  * \return int
  *
  */
-int Service_getTipo(Service* this,int* tipoServicio)
+int Service_getTipo(eServicio* this,int* tipoServicio)
 {
 	int retorno = 0;
 	*tipoServicio = this->tipo;
@@ -174,7 +174,7 @@ int Service_getTipo(Service* this,int* tipoServicio)
  * \return int
  *
  */
-int Service_setPrecio(Service* this,float precio)
+int Service_setPrecio(eServicio* this,float precio)
 {
 	int retorno = 0;
 	this->precio = precio;
@@ -192,7 +192,7 @@ int Service_setPrecio(Service* this,float precio)
  * \return int
  *
  */
-int Service_getPrecio(Service* this,float* precio)
+int Service_getPrecio(eServicio* this,float* precio)
 {
 	int retorno = 0;
 	*precio = this->precio;
@@ -212,7 +212,7 @@ int Service_getPrecio(Service* this,float* precio)
  * \return int
  *
  */
-int Service_setTotal(Service* this,float total)
+int Service_setTotal(eServicio* this,float total)
 {
 	int retorno = 0;
 	this->total = total;
@@ -230,7 +230,7 @@ int Service_setTotal(Service* this,float total)
  * \return int
  *
  */
-int Service_getTotal(Service* this,float* total)
+int Service_getTotal(eServicio* this,float* total)
 {
 	int retorno = 0;
 	*total = this->total;
@@ -245,13 +245,13 @@ int Service_getTotal(Service* this,float* total)
 
 /** \brief Inicializa al Servicio.
  *
- * \return Service*
+ * \return eServicio*
  *
  */
-Service* Service_new()
+eServicio* Service_new()
 {
-	Service* nuevoServicio = NULL;
-    nuevoServicio= (Service*) malloc(sizeof(Service));
+	eServicio* nuevoServicio = NULL;
+    nuevoServicio= (eServicio*) malloc(sizeof(eServicio));
 
     if(nuevoServicio != NULL)
     {
@@ -276,13 +276,13 @@ Service* Service_new()
  * \param precioStr char*
  * \param flycodeStr char*
  * \param estadoStr char*
- * \return Service*
+ * \return eServicio*
  *
  */
 
-Service* Service_newParametros(char* idStr,char* cantStr, char* tipoStr, char* precioStr, char* descStr, char* totalStr)
+eServicio* Service_newParametros(char* idStr,char* cantStr, char* tipoStr, char* precioStr, char* descStr, char* totalStr)
 {
-	Service* nuevoServicio = Service_new();
+	eServicio* nuevoServicio = Service_new();
 	int idAux;
 	int tipoAux;
 	float precioAux;
@@ -345,7 +345,7 @@ Service* Service_newParametros(char* idStr,char* cantStr, char* tipoStr, char* p
 void Service_list(LinkedList* pArrayListService)
 {
 	Node* indice = pArrayListService->pFirstNode;
-	Service* leer;
+	eServicio* leer;
 
 	printf("\nID  | Descripcion |   tipo     |      Precio  | Cantidad | Total\n");
 	for(; indice != NULL; indice = indice->pNextNode)
@@ -356,10 +356,10 @@ void Service_list(LinkedList* pArrayListService)
 }
 
 /** \brief Printea un Servicio.
- * \param this Service*
+ * \param this eServicio*
  *
  */
-void Service_print(Service* this)
+void Service_print(eServicio* this)
 {
 
 	if(this != NULL)
@@ -382,7 +382,7 @@ void Service_print(Service* this)
 
 void calcularTotal(void* servicio)
 {
-	Service* calculando;
+	eServicio* calculando;
 	calculando = servicio;
 	float resultado = calculando->precio * calculando->cantidad;
 	Service_setTotal(calculando, resultado);
@@ -391,8 +391,8 @@ void calcularTotal(void* servicio)
 
 int compararDesc(void* ServicioUno, void* ServicioDos)
 {
-	Service* primerServicio = ServicioUno;
-	Service* segundoServicio = ServicioDos;
+	eServicio* primerServicio = ServicioUno;
+	eServicio* segundoServicio = ServicioDos;
 	int comparacion;
 	comparacion = strcmp(primerServicio->descripcion, segundoServicio->descripcion);
 	return comparacion;
@@ -401,7 +401,7 @@ int compararDesc(void* ServicioUno, void* ServicioDos)
 int filtroTipoUno(void* servicio)
 {
 	int retorno = 0;
-	Service* filtrando = servicio;
+	eServicio* filtrando = servicio;
 
 	if( filtrando->tipo == 1)
 	{
@@ -413,7 +413,7 @@ int filtroTipoUno(void* servicio)
 int filtroTipoDos(void* servicio)
 {
 	int retorno = 0;
-	Service* filtrando = servicio;
+	eServicio* filtrando = servicio;
 
 	if( filtrando->tipo == 2)
 	{
@@ -425,7 +425,7 @@ int filtroTipoDos(void* servicio)
 int filtroTipoTres(void* servicio)
 {
 	int retorno = 0;
-	Service* filtrando = servicio;
+	eServicio* filtrando = servicio;
 
 	if( filtrando->tipo == 3)
 	{
