@@ -32,8 +32,10 @@ int main(void) {
 
 	LinkedList* lista = ll_newLinkedList();
 
+
 	if(lista != NULL)
 	{
+		int flagCaseUno = 1;
 		int option;
 		int datosGuardados = 1;
 		do
@@ -58,33 +60,69 @@ int main(void) {
 					{
 						printf("Archivo cargado con exito.");
 						datosGuardados = 0;
+						flagCaseUno = 0;
 					}
 					break;
 				case 2:
-					controller_ListService(lista);
+					if(flagCaseUno == 0)
+					{
+						controller_ListService(lista);
+					}
+					else
+					{
+						printf("Carge un archivo antes de realizar el resto de acciones.");
+					}
 					break;
 				case 3:
-					if(controller_TotalPrice(lista))
+					if(flagCaseUno == 0)
 					{
-						printf("Precio total establecido.");
+						if(controller_TotalPrice(lista))
+						{
+							printf("Precio total establecido.");
+							datosGuardados = 0;
+						}
+						else
+						{
+							printf("Hubo un error al cargar los totales.");
+						}
+					}
+					else
+					{
+						printf("Carge un archivo antes de realizar el resto de acciones.");
+					}
+					break;
+				case 4:
+					if(flagCaseUno == 0)
+					{
+						controller_Filter(lista);
+					}
+					else
+					{
+						printf("Carge un archivo antes de realizar el resto de acciones.");
+					}
+					break;
+				case 5:
+					if(flagCaseUno == 0)
+					{
+						controller_sortService(lista);
+						controller_ListService(lista);
 						datosGuardados = 0;
 					}
 					else
 					{
-						printf("Hubo un error al cargar los totales.");
+						printf("Carge un archivo antes de realizar el resto de acciones.");
 					}
 					break;
-				case 4:
-					controller_Filter(lista);
-					break;
-				case 5:
-					controller_sortService(lista);
-					controller_ListService(lista);
-					datosGuardados = 0;
-					break;
 				case 6:
-					controller_saveAsText(lista);
-					datosGuardados = 1;
+					if(flagCaseUno == 0)
+					{
+						controller_saveAsText(lista);
+						datosGuardados = 1;
+					}
+					else
+					{
+						printf("Carge un archivo antes de realizar el resto de acciones.");
+					}
 					break;
 				case 7:
 					if(datosGuardados != 1)
