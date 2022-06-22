@@ -47,10 +47,6 @@ void Service_list(LinkedList* pArrayListService);
 
 void Service_print(eServicio* this);
 
-int Service_idDisponible(LinkedList* pArrayListService);
-
-void* Service_busqueda(LinkedList* pArrayListService, int idABuscar);
-
 int Service_sort(LinkedList* pArrayListService, int *indexUno, int *indexDos);
 
 void calcularTotal(void* servicio);

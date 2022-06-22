@@ -48,12 +48,9 @@ int Service_getId(eServicio* this,int* id)
 	return retorno;
 }
 
-
-
-
 /** \brief Modificar la cantidad del Servicio.
  *
- * \param id int
+ * \param cant int
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -72,7 +69,7 @@ int Service_setCant(eServicio* this,int cant)
 
 /** \brief Obtiene la cantidad del Servicio.
  *
- * \param id int*
+ * \param cant int*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -90,7 +87,7 @@ int Service_getCant(eServicio* this,int* cant)
 
 /** \brief Modificar la descripcion del Servicio.
  *
- * \param nombre char*
+ * \param desc char*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -108,10 +105,9 @@ int Service_setDesc(eServicio* this,char* desc)
 
 }
 
-
 /** \brief obtener la descripcion del Servicio.
  *
- * \param nombre char*
+ * \param desc char*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -127,7 +123,6 @@ int Service_getDesc(eServicio* this,char* desc)
 
 	return retorno;
 }
-
 
 
 /** \brief Modificar el tipo del Servicio.
@@ -207,7 +202,7 @@ int Service_getPrecio(eServicio* this,float* precio)
 
 /** \brief Modificar el precio total del Servicio.
  *
- * \param precio float
+ * \param total float
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -225,7 +220,7 @@ int Service_setTotal(eServicio* this,float total)
 
 /** \brief Obtener el precio total del Servicio.
  *
- * \param precio float*
+ * \param total float*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -270,12 +265,11 @@ eServicio* Service_new()
 
 /** \brief Rellena el Servicio.
  * \param idStr char*
- * \param nombreStr char*
- * \param apellidoStr char*
- * \param tipoServicioStr char*
+ * \param cantStr char*
+ * \param tipoStr char*
  * \param precioStr char*
- * \param flycodeStr char*
- * \param estadoStr char*
+ * \param descStr char*
+ * \param totalStr char*
  * \return eServicio*
  *
  */
@@ -396,6 +390,11 @@ void Service_print(eServicio* this)
 
 
 
+/** \brief Funcion para el ll_map
+ *
+ * \param Servicio void*
+ *
+ */
 void calcularTotal(void* servicio)
 {
 	eServicio* calculando;
@@ -404,7 +403,13 @@ void calcularTotal(void* servicio)
 	Service_setTotal(calculando, resultado);
 }
 
-
+/** \brief Comparacion para el ordenamiento.
+ *
+ * \param ServicioUno void*
+ * \param ServicioDos void*
+ * \return int
+ *
+ */
 int compararDesc(void* ServicioUno, void* ServicioDos)
 {
 	eServicio* primerServicio = ServicioUno;
@@ -414,6 +419,12 @@ int compararDesc(void* ServicioUno, void* ServicioDos)
 	return comparacion;
 }
 
+/** \brief Filtro para la funcion ll_filter.
+ *
+ * \param servicio void*
+ * \return int
+ *
+ */
 int filtroTipoUno(void* servicio)
 {
 	int retorno = 0;
@@ -426,6 +437,12 @@ int filtroTipoUno(void* servicio)
 	return retorno;
 }
 
+/** \brief Filtro para la funcion ll_filter.
+ *
+ * \param servicio void*
+ * \return int
+ *
+ */
 int filtroTipoDos(void* servicio)
 {
 	int retorno = 0;
@@ -438,6 +455,14 @@ int filtroTipoDos(void* servicio)
 	return retorno;
 }
 
+
+
+/** \brief Filtro para la funcion ll_filter.
+ *
+ * \param servicio void*
+ * \return int
+ *
+ */
 int filtroTipoTres(void* servicio)
 {
 	int retorno = 0;

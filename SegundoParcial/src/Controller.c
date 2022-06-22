@@ -17,9 +17,8 @@
 #include "utn.h"
 #include "Service.h"
 
-/** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo texto).
+/** \brief Carga los datos de los servicios desde un archivo.
  *
- * \param path char*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -44,9 +43,8 @@ int controller_loadFromText(LinkedList* pArrayListService)
     return validarParseo;
 }
 
-/** \brief Listar pasajeros
+/** \brief Listar servicios
  *
- * \param path char*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -60,9 +58,8 @@ int controller_ListService(LinkedList* pArrayListService)
     return 1;
 }
 
-/** \brief Ordenar pasajeros
+/** \brief Ordenar servicios
  *
- * \param path char*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -77,9 +74,8 @@ int controller_sortService(LinkedList* pArrayListService)
     return retorno;
 }
 
-/** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo texto).
+/** \brief Guarda los datos de los servicios en un archivo.
  *
- * \param path char*
  * \param pArrayListService LinkedList*
  * \return int
  *
@@ -129,6 +125,14 @@ int controller_saveAsText(LinkedList* pArrayListService)
 	return retorno;
 }
 
+
+
+/** \brief Llama a la funcion ll_map para agregar los precios finales.
+ *
+ * \param pArrayListService LinkedList*
+ * \return int
+ *
+ */
 int controller_TotalPrice(LinkedList* pArrayListService)
 {
 	int retorno = 0;
@@ -141,6 +145,13 @@ int controller_TotalPrice(LinkedList* pArrayListService)
 
 }
 
+
+/** \brief Filtra los datos y los guarda en una nueva lista .csv.
+ *
+ * \param pArrayListService LinkedList*
+ * \return void
+ *
+ */
 void controller_Filter(LinkedList* pArrayListService)
 {
 
