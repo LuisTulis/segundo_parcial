@@ -364,10 +364,26 @@ void Service_print(eServicio* this)
 
 	if(this != NULL)
 	{
+
+		char tipoAux[20];
+		switch(this->tipo)
+		{
+			case 1:
+				strcpy(tipoAux, "MINORISTA");
+				break;
+			case 2:
+				strcpy(tipoAux, "MAYORISTA");
+				break;
+			case 3:
+				strcpy(tipoAux, "EXPORTAR");
+				break;
+		}
+
+
 		printf("%d   |   ", this->id);
 		printf(this->descripcion);
 		printf("   |   ");
-		printf("%d", this->tipo);
+		printf(tipoAux);
 		printf("   |   ");
 		printf("%.2f", this->precio);
 		printf("   |   ");

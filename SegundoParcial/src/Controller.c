@@ -146,7 +146,7 @@ void controller_Filter(LinkedList* pArrayListService)
 
 	int tipoSeleccionado;
 	utn_getNumeroEntero(&tipoSeleccionado,"\nPor que tipo desea filtrar?\n"
-												"1-2-3", "Opcion no valida", 1, 3, 3);
+												"1-Minorista\n2-Mayorista\n3-Exportar\n", "Opcion no valida", 1, 3, 3);
 
 	LinkedList* NuevaLista = ll_newLinkedList();
 	switch(tipoSeleccionado)
