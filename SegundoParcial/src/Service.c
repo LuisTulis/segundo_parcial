@@ -341,7 +341,7 @@ void Service_list(LinkedList* pArrayListService)
 	Node* indice = pArrayListService->pFirstNode;
 	eServicio* leer;
 
-	printf("\nID  | Descripcion |   tipo     |      Precio  | Cantidad | Total\n");
+	printf("\n|  ID  |        Descripcion        |            tipo           |   Precio  |   Cantidad  | Total    |\n");
 	for(; indice != NULL; indice = indice->pNextNode)
 	{
 		leer = indice->pElement;
@@ -374,7 +374,8 @@ void Service_print(eServicio* this)
 		}
 
 
-		printf("%d   |   ", this->id);
+		printf("|%-5d | %-25s | %-25s |  %-5.2f   |    %-5d    | %-5.2f \n|---------------------------------------------------------------------------------------------------|\n", this->id, this->descripcion, tipoAux, this->precio, this->cantidad, this->total);
+		/*printf("%d   |   ", this->id);
 		printf(this->descripcion);
 		printf("   |   ");
 		printf(tipoAux);
@@ -384,7 +385,7 @@ void Service_print(eServicio* this)
 		printf("%d", this->cantidad);
 		printf("   |   ");
 		printf("%.2f", this->total);
-		printf("\n-------------------------------\n");
+		printf("\n-------------------------------\n");*/
 	}
 }
 

@@ -263,6 +263,7 @@ int ll_remove(LinkedList* this,int index)
 				}
 				else
 				{
+
 					anterior = getNode(this, index-1);
 					if(anterior != NULL)
 					{
@@ -297,7 +298,7 @@ int ll_clear(LinkedList* this)
 	{
 		flagReturn = 0;
 		int largo = ll_len(this);
-		for(int i = 0 ; i < largo ; i++)
+		for(int i = largo ; i >= 0; i--)
 		{
 			returnAux = ll_remove(this, i);
 			if(returnAux != 0)

@@ -36,6 +36,7 @@ int controller_loadFromText(LinkedList* pArrayListService)
 	pFile = fopen(path, "r");
 	if(pFile != NULL)
 	{
+		ll_clear(pArrayListService);
 		validarParseo = parser_Service(pFile, pArrayListService);
 	}
 	fclose(pFile);
